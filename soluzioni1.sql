@@ -12,3 +12,11 @@ SELECT `c`.`name`, `c`.`cfu`,`c`.`year`
 FROM `courses` `c`
 WHERE `c`.`cfu` > 10
 ORDER BY `c`.`cfu`, `c`.`year`;
+
+/*
+3. Selezionare tutti gli studenti che hanno più di 30 anni
+*/
+SELECT `s`.* 
+FROM `students` `s`
+WHERE DATEDIFF(CURDATE(), `s`.`date_of_birth`)/365.2422 > 30
+ORDER BY `s`.`date_of_birth`, `s`.`surname`,`s`.`name`;
