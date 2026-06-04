@@ -69,3 +69,10 @@ WHERE
 	`d`.`level` = "magistrale"
 ORDER BY
 	`d`.`name`;
+
+/*
+7. Da quanti dipartimenti è composta l'università? (12)
+*/
+
+SELECT COUNT(`d`.`id`)
+FROM `departments` `d`
