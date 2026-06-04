@@ -44,3 +44,17 @@ WHERE
 ORDER BY
 	`c`.`degree_id`,
     `c`.`name`;
+
+/*
+5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del
+20/06/2020 (21)
+*/
+
+SELECT `e`.*
+FROM `exams` `e`
+WHERE 
+	`e`.`date` = "2020-06-20" AND 
+    HOUR(`e`.`hour`) >= 14
+ORDER BY 
+	`e`.`hour`, 
+	`e`.`location`;
