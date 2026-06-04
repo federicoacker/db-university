@@ -75,4 +75,12 @@ ORDER BY
 */
 
 SELECT COUNT(`d`.`id`)
-FROM `departments` `d`
+FROM `departments` `d`;
+
+/*
+8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
+*/
+
+SELECT COUNT(`t`.`id`)
+FROM `teachers` `t`
+WHERE `t`.`phone` IS NULL;
