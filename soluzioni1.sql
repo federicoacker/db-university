@@ -58,3 +58,14 @@ WHERE
 ORDER BY 
 	`e`.`hour`, 
 	`e`.`location`;
+
+/*
+6. Selezionare tutti i corsi di laurea magistrale (38)
+*/
+
+SELECT `d`.*
+FROM `degrees` `d`
+WHERE
+	`d`.`level` = "magistrale"
+ORDER BY
+	`d`.`name`;
