@@ -96,3 +96,17 @@ QUERY CON GROUP BY
 SELECT COUNT(`s`.`id`) as `enrolled_students_count`, YEAR(`s`.`enrolment_date`) as `enrolment_year`
 FROM `students` `s`
 GROUP BY `enrolment_year`;
+
+/*
+2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+*/
+
+SELECT COUNT(`t`.`id`) as `teachers_count`, `t`.`office_address` as `address`
+FROM `teachers` `t`
+GROUP BY `address`
+HAVING `teachers_count` > 1;
+
+/*
+Essendo che la traccia era di "contare gli insegnatni che hanno l'ufficio nello stesso edificio", 
+ho escluso gli edifici che hanno come count 1. Perché in quegli edifici non ci sono "insegnanti nello stesso edificio".
+*/
