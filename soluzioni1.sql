@@ -151,7 +151,7 @@ SELECT
 	`s`.`registration_number`, 
 	`s`.`id` as `student_id`, 
 	`d`.`name` as `degree_name`,
-	`d`.`id` as `degree_id`
+	`d`.`id`
 FROM `students` `s`
 JOIN `degrees` `d`
 ON `s`.`degree_id` = `d`.`id`
@@ -179,11 +179,13 @@ SELECT
     `c`.`cfu` as `course_cfu`,
     `c`.`website` as `course_website`,
 	CONCAT(`t`.`name`, " ", `t`.`surname`) as `teacher_full_name`
-FROM `course_teacher` `ce`
-JOIN `courses` `c`
-ON `ce`.`teacher_id` = 44 AND `c`.`id` = `ce`.`course_id`
+FROM `courses` `c`
+JOIN `course_teacher` `ct`
+ON `c`.`id` = `ct`.`course_id`
 JOIN `teachers` `t`
-ON `t`.`id` = 44;
+ON `t`.`id` = `ct`.`teacher_id`
+WHERE `t`.`id` = 44
+ORDER BY `course_year`, `course_cfu`;
 
 /*
 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
@@ -192,9 +194,11 @@ nome
 */
 
 SELECT 
-	`s`.*,
-    `d`.*,
-    `de`.*
+	CONCAT(`s`.`name`, " ", `s`.`surname`) as `student_full_name`,
+    `s`.`registration_number` as `student_registration_numer`,
+    `d`.`name` as `degree_name`,
+    `d`.`id` as `degree_id`,
+    `de`.`name` as `department_name`
 FROM `students` `s`
 JOIN `degrees` `d`
 ON `d`.`id` = `s`.`degree_id`
@@ -218,3 +222,24 @@ ON `ct`.`course_id` = `c`.`id`
 JOIN `teachers` `t`
 ON `t`.`id` = `ct`.`teacher_id`
 ORDER BY `d`.`id`, `c`.`id`, `t`.`id`;
+
+/*
+6. Selezionare tutti i docenti che insegnano nel Dipartimento di
+Matematica (54)
+*/
+SELECT 
+	`t`.`id` as `teacher_id`,
+	CONCAT(`t`.`name`, " ", `t`.`surname`) as `teacher_full_name`,
+    `de`.`name` as `department_name`,
+    `d`.`name` as `degree_name`
+FROM `teachers` `t`
+JOIN `course_teacher` `ct`
+ON `ct`.`teacher_id` = `t`.`id`
+JOIN `courses` `c`
+ON `c`.`id` = `ct`.`course_id`
+JOIN `degrees` `d`
+ON `c`.`degree_id` = `d`.`id`
+JOIN `departments` `de`
+ON `de`.`id` = `d`.`department_id`
+WHERE `de`.`name` = "Dipartimento di Matematica"
+ORDER BY `t`.`id`;
