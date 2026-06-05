@@ -151,7 +151,7 @@ SELECT
 	`s`.`registration_number`, 
 	`s`.`id` as `student_id`, 
 	`d`.`name` as `degree_name`,
-	`d`.`id`
+	`d`.`id` as `degree_id`
 FROM `students` `s`
 JOIN `degrees` `d`
 ON `s`.`degree_id` = `d`.`id`
