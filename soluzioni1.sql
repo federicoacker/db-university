@@ -110,3 +110,23 @@ HAVING `teachers_count` > 1;
 Essendo che la traccia era di "contare gli insegnatni che hanno l'ufficio nello stesso edificio", 
 ho escluso gli edifici che hanno come count 1. Perché in quegli edifici non ci sono "insegnanti nello stesso edificio".
 */
+
+/*
+3. Calcolare la media dei voti di ogni appello d'esame
+*/
+SELECT AVG(`es`.`vote`) as `vote_average`, `es`.`exam_id` as `exam_id`
+FROM `exam_student` `es`
+GROUP BY `exam_id`;
+
+SELECT COUNT(`es`.`student_id`), `es`.`exam_id`
+FROM `exam_student` `es`
+GROUP BY `es`.`exam_id`;
+
+SELECT SUM(`es`.`vote`), `es`.`exam_id`
+FROM `exam_student` `es`
+GROUP BY `es`.`exam_id`;
+
+/*
+Solo la prima query fa quello richiesto dall'esercizio, le altre due query 
+sotto sono quelle che ho creato per controllare che non ci fossero errori nei risultati
+*/
