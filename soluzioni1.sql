@@ -84,3 +84,15 @@ FROM `departments` `d`;
 SELECT COUNT(`t`.`id`)
 FROM `teachers` `t`
 WHERE `t`.`phone` IS NULL;
+
+/*
+QUERY CON GROUP BY
+*/
+
+/*
+1. Contare quanti iscritti ci sono stati ogni anno
+*/
+
+SELECT COUNT(`s`.`id`) as `enrolled_students_count`, YEAR(`s`.`enrolment_date`) as `enrolment_year`
+FROM `students` `s`
+GROUP BY `enrolment_year`;
