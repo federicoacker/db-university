@@ -130,3 +130,10 @@ GROUP BY `es`.`exam_id`;
 Solo la prima query fa quello richiesto dall'esercizio, le altre due query 
 sotto sono quelle che ho creato per controllare che non ci fossero errori nei risultati
 */
+
+/*
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+*/
+SELECT COUNT(`de`.`id`) as `degrees_count`, `de`.`department_id` as `department_id`
+FROM `degrees` `de`
+GROUP BY `department_id`;
