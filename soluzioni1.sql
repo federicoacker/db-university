@@ -137,3 +137,22 @@ sotto sono quelle che ho creato per controllare che non ci fossero errori nei ri
 SELECT COUNT(`de`.`id`) as `degrees_count`, `de`.`department_id` as `department_id`
 FROM `degrees` `de`
 GROUP BY `department_id`;
+
+/*
+QUERY CON JOIN
+*/
+
+/*
+1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+*/
+
+SELECT 
+	CONCAT(`s`.`name`, " ", `s`.`surname`) as `student_full_name`,
+	`s`.`registration_number`, 
+	`s`.`id` as `student_id`, 
+	`d`.`name`,
+	`d`.`id`
+FROM `students` `s`
+JOIN `degrees` `d`
+ON `s`.`degree_id` = `d`.`id`
+WHERE `d`.`name` = "Corso di Laurea in Economia";
