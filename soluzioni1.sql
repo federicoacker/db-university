@@ -150,7 +150,7 @@ SELECT
 	CONCAT(`s`.`name`, " ", `s`.`surname`) as `student_full_name`,
 	`s`.`registration_number`, 
 	`s`.`id` as `student_id`, 
-	`d`.`name`,
+	`d`.`name` as `degree_name`,
 	`d`.`id`
 FROM `students` `s`
 JOIN `degrees` `d`
