@@ -156,3 +156,14 @@ FROM `students` `s`
 JOIN `degrees` `d`
 ON `s`.`degree_id` = `d`.`id`
 WHERE `d`.`name` = "Corso di Laurea in Economia";
+
+/*
+2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di
+Neuroscienze
+*/
+
+SELECT `d`.*
+FROM `degrees` `d`
+JOIN `departments` `de`
+ON `d`.`department_id` = `de`.`id`
+WHERE `de`.`name` = "Dipartimento di Neuroscienze" AND `d`.`level` = "Magistrale";
